@@ -19,4 +19,6 @@ for i in range(n):
 
 print("mean: ", mean(l))
 print("median: ", median(l))
+print("max: ", max(l))
+print("min: ", min(l))
 print(l)
