@@ -17,6 +17,8 @@ l = list()
 for i in range(n):
     l.append(int(input("Enter the element {}: ".format(i+1))))
 
+print(l)
+print(*l)
 print("mean: ", mean(l))
 print("median: ", median(l))
 print("max: ", max(l))
