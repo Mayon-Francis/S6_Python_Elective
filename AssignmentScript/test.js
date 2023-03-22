@@ -16,11 +16,10 @@ const htmlFileStart = `
         margin: 0;
         padding: 0;
         background-color: #fff !important;
-        word-wrap: break-all;
-        overflow: hidden;
       }
-      pre {
-        white-space: pre-wrap;
+      code[class*="language-"], pre[class*="language-"] {
+        white-space: normal !important;
+        word-break: break-word !important;
       }
     
     .container {
@@ -97,7 +96,9 @@ async function main() {
 
   let questionsHtmls = ``;
 
-  for (let file of files) {
+  pythonFiles = files.filter((file) => file.endsWith(".py"));
+
+  for (let file of pythonFiles) {
     console.log(file);
     const filePath = path.join(__dirname, "../Assignment3/", file);
 
@@ -126,11 +127,18 @@ async function main() {
       programOutput += chunk;
     });
 
+    process.stdin.on("data", (chunk) => {
+      programOutput += chunk;
+    });
+
     process.stdin.pipe(childProcess.stdin);
 
     await new Promise((resolve) => {
       childProcess.on("close", resolve);
     });
+
+    childProcess.removeAllListeners();
+    process.stdin.removeAllListeners();
 
     const outputHtml = `
     <pre><code class="language-shell">${programOutput}</code></pre>

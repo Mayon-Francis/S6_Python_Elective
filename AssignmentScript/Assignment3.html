@@ -13,11 +13,10 @@
         margin: 0;
         padding: 0;
         background-color: #fff !important;
-        word-wrap: break-all;
-        overflow: hidden;
       }
-      pre {
-        white-space: pre-wrap;
+      code[class*="language-"], pre[class*="language-"] {
+        white-space: normal !important;
+        word-break: break-word !important;
       }
     
     .container {
@@ -88,26 +87,284 @@
         
     <div class="solution">
     
-    <pre><code class="language-python">n = int(input("Enter n: "))
+    <pre><code class="language-python">stud = list()
+stud =  stud + [44]
+stud.append("Mayon Francis")
+stud.extend(["piravom", 686664, 7034452171])
+stud.insert(0, "MDL20CS073")
 
-for i in range(1, n+1, 2):
-    if(i == 1):
-        pass
-    elif i % 4 == 1:
-        print("+", end=" ")
-    else:
-        print("-", end=" ")
-
-    if i ==1:
-        print("x", end=" ")
-    else:
-        print("x^{}/{}!".format(i,i), end=" ")
-
-print("\n")</code></pre>
+print("KTU_ID and Name: ", stud[0], stud[2])
+print("Number of characters in name: ", len(stud[2]))
+print("Last 5 digits of phone number: ", stud[5]%100000)
+stud.reverse()
+print("List reversed", stud)
+print("Index of your name: ", stud.index("Mayon Francis"))
+</code></pre>
     
     
-    <pre><code class="language-shell">Enter n: x - x^3/3! 
+    <pre><code class="language-shell">KTU_ID and Name:  MDL20CS073 Mayon Francis
+Number of characters in name:  13
+Last 5 digits of phone number:  52171
+List reversed [7034452171, 686664, 'piravom', 'Mayon Francis', 44, 'MDL20CS073']
+Index of your name:  3
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">l = list()
+prime = list()
+composite = list()
+n = int(input("Enter the number of elements: "))
+def isPrime(n):
+    if n > 1:
+        for i in range(2, n//2 + 1):
+            if (n % i) == 0:
+                return False
+        return True
+    else:
+        return False
+    
+for i in range(0, n):
+    ele = int(input(f"Enter element {i+1}:"))
+    l.append(ele)
+    if isPrime(ele):
+        prime.append(ele)
+    else:
+        composite.append(ele)
+print("List: ", l)
+print("Prime: ", prime)
+print("Composite: ", composite)
+</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter the number of elements: 2
+Enter element 1:1
+Enter element 2:2
+List:  [1, 2]
+Prime:  [2]
+Composite:  [1]
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">n = int(input("Enter number of names: "))
+names = list()
+for i in range(n):
+    names.append(input("Enter name: "))
 
+names.sort()
+print("Names in Alphabetical Order:", names)
+print("Name with maximum length:", max(names, key=len))
+print("Names starting with A:", [name for name in names if name[0] == "A"])
+names = [name.upper() for name in names]
+print("Names in Uppercase:", names)
+names.reverse()
+print("Reverse: ", names)
+names.sort(key=len)
+print("Names sorted by length:", names)</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter number of names: 1
+Enter name: aaa
+Names in Alphabetical Order: ['aaa']
+Name with maximum length: aaa
+Names starting with A: []
+Names in Uppercase: ['AAA']
+Reverse:  ['AAA']
+Names sorted by length: ['AAA']
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">l1 = [i**3 for i in range(20)]
+print(l1)
+
+l2 = [i for i in range(1,100) if i%3 == 0 ]
+print(l2)</code></pre>
+    
+    
+    <pre><code class="language-shell">[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+[3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99]
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">t = ()
+print("Enter 10 numbers: ")
+
+for i in range(10):
+    t += (int(input("> ")),)
+
+print("Tuple:", t)
+print("Sum: ", sum(t))
+print("Avg: ", sum(t)/len(t))
+print("Max: ", max(t))
+print("Min: ", min(t))
+</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter 10 numbers: 
+> 1
+> 2
+> 3
+> 4
+> 5
+> 6
+> 7
+> 8
+> 9
+> 0
+Tuple: (1, 2, 3, 4, 5, 6, 7, 8, 9, 0)
+Sum:  45
+Avg:  4.5
+Max:  9
+Min:  0
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">A = set()
+print("Enter numbers for set A: ")
+for i in range(5):
+    A.add(int(input("> ")))
+B = set()
+print("Enter numbers for set B: ")
+for i in range(5):
+    B.add(int(input("> ")))
+
+print("A: ", A)
+print("B: ", B)
+print("A union B: ", A.union(B))
+print("A intersection B: ", A.intersection(B))
+print("A Symmetric difference B: ", A.symmetric_difference(B))</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter numbers for set A: 
+> 1
+> 2
+> 3
+> 
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">str = input("Enter a string: ")
+strList = list(str)
+strList.sort()
+print("String characters sorted : ", strList)</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter a string: 4
+String characters sorted :  ['4']
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">print("Enter 5 strings: ")
+strList = []
+for i in range(5):
+    s = input("> ")
+    strList.append(s)
+
+totalCharLen = 0
+for str in strList:
+    print(f"String: {str}, length: {len(str)}")
+    totalCharLen += len(str)
+
+print(f"Average string length: {totalCharLen/len(strList)}")
+
+</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter 5 strings: 
+> 5
+> 6
+> 7
+> 8
+> 9
+String: 5, length: 1
+String: 6, length: 1
+String: 7, length: 1
+String: 8, length: 1
+String: 9, length: 1
+Average string length: 1.0
 </code></pre>
     
     </div>
@@ -124,36 +381,38 @@ print("\n")</code></pre>
     <div class="solution">
     
     <pre><code class="language-python">import math
-n = int(input("Enter n: "))
-x = int(input("Enter x: "))
 
-sum=0
+numList = []
+print("Enter 5 numbers: ")
+for i in range(5):
+    numList.append(int(input("> ")))
+mean = sum(numList)/len(numList)
+print("Mean: ", mean)
+numList.sort()
+if len(numList) % 2 == 0:
+    median = (numList[len(numList)//2] + numList[len(numList)//2 - 1])/2
+else:
+    median = numList[len(numList)//2]
+print("Median: ", median)
+var  = sum(pow(x-mean,2) for x in numList) / len(numList) 
+print("Standard Deviation: ", math.sqrt(var)  )
 
-print("Series: ", end=" ")
-for i in range(1, n+1, 2):
-    temp = 1
-    if(i == 1):
-        pass
-    elif i % 4 == 1:
-        print("+", end=" ")
-    else:
-        temp *= -1
-        print("-", end=" ")
+import statistics
+print("OR: Standard Deviation: ", statistics.stdev(numList))
 
-    if i ==1:
-        print("x", end=" ")
-    else:
-        print("x^{}/{}!".format(i,i), end=" ")
-
-    temp *= (x**i)/math.factorial(i)
-
-    sum += temp
-
-print("Sum: {}\n".format(sum))</code></pre>
+</code></pre>
     
     
-    <pre><code class="language-shell">Enter n: Enter x: Series:  x - x^3/3! Sum: -30.0
-
+    <pre><code class="language-shell">Enter 5 numbers: 
+> 9
+> 2
+> 4
+> 6
+> 7
+Mean:  5.6
+Median:  6
+Standard Deviation:  2.4166091947189146
+OR: Standard Deviation:  2.701851217221259
 </code></pre>
     
     </div>
@@ -169,17 +428,27 @@ print("Sum: {}\n".format(sum))</code></pre>
         
     <div class="solution">
     
-    <pre><code class="language-python">n = int(input("Enter n: "))
+    <pre><code class="language-python">l = [1, 1.0, 2, "Hi", "Hello", 3.14, 9.18]
+intL = []
+floatL = []
+strL = []
+for i in l:
+    if type(i) == int:
+        intL.append(i)
+    elif type(i) == float:
+        floatL.append(i)
+    elif type(i) == str:
+        strL.append(i)
 
-for i in range(1, n+1):
-    for j in range(1, i+1):
-        print(j, end=" ")
-    print()</code></pre>
+print("Integer List: ", intL)
+print("Float List: ", floatL)
+print("String List: ", strL)
+</code></pre>
     
     
-    <pre><code class="language-shell">Enter n: 1 
-1 2 
-1 2 3 
+    <pre><code class="language-shell">Integer List:  [1, 2]
+Float List:  [1.0, 3.14, 9.18]
+String List:  ['Hi', 'Hello']
 </code></pre>
     
     </div>
@@ -195,19 +464,107 @@ for i in range(1, n+1):
         
     <div class="solution">
     
-    <pre><code class="language-python">n = str(input("Enter n: "))
-sum=0
+    <pre><code class="language-python">print("Enter 5 numbers: ")
+numList = []
+for i in range(5):
+    numList.append(int(input("> ")))
 
-print("The reverse is: ", n[::-1])
-n = int(n)
-while(n>0):
-    sum+=n%10
-    n=n//10
-print("Sum of digits: ", sum)</code></pre>
+ascNumList = sorted(numList)
+descNumList = sorted(numList, reverse=True)
+
+if numList == ascNumList:
+    print("Ascending")
+elif numList == descNumList:
+    print("Descending")
+else:
+    print("Unsorted")</code></pre>
     
     
-    <pre><code class="language-shell">Enter n: The reverse is:  2
-Sum of digits:  2
+    <pre><code class="language-shell">Enter 5 numbers: 
+> 3
+> 4
+> 5
+> 
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">l = [10, 20, 20, 30, 40]
+s = set(l)
+dupRem = list(s)
+print("Duplicates removed: ",sorted(dupRem))
+
+# If duplicate present, remove it altogether
+for i in l: 
+    if l.count(i) > 1:
+        l = [x for x in l if x != i]
+
+print("Duplicates removed altogether: ", l)</code></pre>
+    
+    
+    <pre><code class="language-shell">Duplicates removed:  [10, 20, 30, 40]
+Duplicates removed altogether:  [10, 30, 40]
+</code></pre>
+    
+    </div>
+    
+        </div>
+    
+        <div class="content">
+        
+    <div class="question">
+        1. Create a python script
+    </div>
+    
+        
+    <div class="solution">
+    
+    <pre><code class="language-python">print("Enter 10 numbers: ")
+numList = []
+for i in range(10):
+    numList.append(int(input("> ")))
+
+numList.sort()
+
+maxCount = 0
+maxNum = set()
+for i in range(len(numList)):
+    count = 0
+    for j in range(len(numList)):
+        if numList[i] == numList[j]:
+            count += 1
+    if count > maxCount:
+        maxCount = count
+        maxNm = {numList[i]}
+    elif count == maxCount:
+        maxNm.add(numList[i])
+
+print("Numbers with largest frequency of occurrence: ", maxNm)</code></pre>
+    
+    
+    <pre><code class="language-shell">Enter 10 numbers: 
+> 6
+> 7
+> 7
+> 7
+> 7
+> 7
+> 7
+> 7
+> 7
+> 7
+Numbers with largest frequency of occurrence:  {7}
 </code></pre>
     
     </div>
